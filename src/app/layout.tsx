@@ -1,8 +1,26 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Roboto_Mono, Coming_Soon } from "next/font/google";
 import "./globals.css";
+import localFont from 'next/font/local'
+
+// lokalni fonty pro lokalni borce
+const dede = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Supreme-Bold.ttf',
+      weight: '400'
+    },
+    {
+      path: '../../public/fonts/Supreme-Bold.ttf',
+      weight: '700'
+    }
+  ],
+  variable: '--font-poppins'
+});
+//google fonty pro žádné borce
 
 const inter = Inter({ subsets: ["latin"] });
+const robotoMono = Roboto_Mono( {subsets:["latin"]}  );
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -10,13 +28,13 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
-}: Readonly<{
+                                     children,
+                                   }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+      <html lang="en">
+      <body className={dede.className}>{children}</body>
+      </html>
   );
 }
