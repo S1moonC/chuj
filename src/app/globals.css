@@ -16,18 +16,53 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
 
 @layer utilities {
   .text-balance {
-    text-wrap: balance;
   }
+}
+.todo-container {
+  width: 300px;
+  margin: 20px auto;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  background: linear-gradient(to right, yellow, greenyellow);
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-list li {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  display: none;
+}
+
+.todo-list li:nth-child(1) {
+  display: block;
+}
+
+.todo-list li:nth-child(2) {
+  display: block;
+}
+
+.todo-list li:nth-child(3) {
+  display: block;
+}
+
+.todo-list li:nth-child(4) {
+  display: block;
+}
+
+.todo-list li:nth-child(n + 69) {
+  display: none;
 }
