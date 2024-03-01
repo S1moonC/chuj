@@ -11,10 +11,11 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Todo    []
+  user_id      Int      @id @default(autoincrement())
+  email   String   @unique
+  name    String?
+  User_Account User_Account[]
+    posts Todo    []
 }
 
 model Todo {
@@ -22,6 +23,6 @@ model Todo {
   title     String
   content   String?
   published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
+  author    User    @relation(fields: [author_id], references: [user_id])
+  author_id Int
 }

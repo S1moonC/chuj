@@ -1,7 +1,9 @@
-import (PrismaClient)
+const { PrismaClient } = require('@prisma/client');
+
+export default function HomePage() {
+
     return (
         <main className="">
-            negri nejsou lidi
         </main>
     );
 }
