@@ -1,21 +1,41 @@
+import Link from "next/link";
 import prisma from "../prisma"
+export type TodoType = {
+    id: string;
+    title: string;
+    complete: boolean;
+    deleted: boolean;
+};
 
-
-export default async function Home( promenna : any, ) {
-    const users = await prisma.user.findMany();
-
+export default async function Home() {
+    const todos = await getTodos();
+    // await prisma.todo.create({data : {title: "test", complete: true}})
+    async function getTodos() {
+    await prisma.todo.findMany({});
+}
     return (
-        < main className="bg-color" >
-            < div className="text-3xl" >Title< /div >
-            < div className="todo-container" >
-                < h1 >Moje to-do list< /h1 >
-                < ul className="todo-list" >
-                    {users.map((user)=>(
-                        // Výpis usera
-                        < li key={user.index}>{user.name}</li >
-                    ))}
-                < /ul >
-            < /div >
-        < /main >
+        <>
+            <header className="flex justify-between items-center pb-5">
+                <h1 className="text-2xl underline underline-offset-4 ">Todos</h1>
+                <Link
+                    href="/new"
+                    className="border border-slate-300 text-slate-300 rounded px-2 py-1 hover:bg-zinc-700 focus-within:bg-zinc-700 outline-none"
+                >
+                    New
+                </Link>
+            </header>
+            <ul className="pl-4">
+                {todos.map((todo) => (
+                    // <li key={todo.id}> {todo.title} </li>
+
+                    <Todo
+                        key={todo.id}
+                       //> {...todo}
+                        //toggleTodo={toggleTodo}
+                        //deleteTodo={deleteTodo}
+                    />
+                ))}
+            </ul>
+        </>
     );
 }
